@@ -11,12 +11,14 @@ weatherForm.addEventListener('submit', (e) => {
 
     messageOne.textContent = 'Loading...';
     messageTwo.textContent = '';
+    weatherIcon.src = '';
 
     fetch('/weather?address='+location).then((response) => {
         response.json().then((data) => {
             if (data.error) {
                 messageOne.textContent = data.error;
                 messageTwo.textContent = '';
+                weatherIcon.src = '';
             } else {
                 weatherIcon.src = data.forecast.weather_icon;
                 console.log(data.forecast.weather_icon);
